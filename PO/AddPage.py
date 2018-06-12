@@ -19,5 +19,5 @@ class add_page(BasePage.Base):
 def addActivity(self,activity):
     add=add_page(self.driver)
     add.click_add_loc()
-    add.send_keys_shuru_loc(activity)
+    add.input_shuru_loc(activity)
     add.click_savetn_loc()

@@ -26,27 +26,11 @@ class Base:
             WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc))
             return self.driver.find_element(*loc)
         except Exception as e:
-            raise e         
-    def find_ClassName(self,*loc):
-        try:
-            WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc))
-            return self.driver.find_element_by_class_name(*loc)
-        except Exception as e:
             raise e
-    def find_Xpath(self, xpath):
+    def find_elements(self,*loc):
         try:
-            return self.driver.find_element_by_xpath(xpath)
-        except Exception as e:
-            raise e
-    def find_name(self,name):
-        try:
-            return self.driver.find_element_by_name(name)
-        except Exception as e:
-            raise e
-    def find_AU(self, name):
-        try:
-            f = self.driver.find_element_by_android_uiautomator('text(\"' + name +'\")')
-            return f
+            WebDriverWait(self.driver, 10).until(EC.visibility_of_all_elements_located(loc))
+            return self.driver.find_elements(*loc)
         except Exception as e:
             raise e
     def send_keys(self,value,*loc):

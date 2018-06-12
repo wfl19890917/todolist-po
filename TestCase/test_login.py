@@ -8,6 +8,9 @@ import time
 from PO import LoginPage
 from Public import BasePage
 from appium import webdriver
+import HTMLTestRunner
+from Public import send_email
+#from Public.send_mail import  send_mail,new_report
 class Test(unittest.TestCase):
     def setUp(self):
         #driver_configure.driver_configure.get_driver(self)
@@ -22,4 +25,19 @@ class Test(unittest.TestCase):
         print("登录成功")
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
-    unittest.main()
+    suite=unittest.TestSuite()
+    suite.addTest(Test('test_login_success'))
+    test_report="D:\\report"
+    filename="D:/report/report.html"
+    fb=open(filename,'wb')
+    runner = HTMLTestRunner.HTMLTestRunner(
+        stream=fb,
+        title=u'88APP自动化测试报告',
+        description=u'项目描述：生产环境'
+    )
+    runner.run(suite)
+    fb.close()
+    time.sleep(5)
+    #send_email.main2()
+    new_report=send_email.new_report(test_report)
+    send_email.send_report()

@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>�Զ������Ա���</title>
+    <title>自动化测试报告</title>
     <meta name="generator" content="HTMLTestRunner 0.8.2"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     
@@ -188,12 +188,12 @@ function showOutput(id, name) {
 --></script>
 
 <div class='heading'>
-<h1>�Զ������Ա���</h1>
-<p class='attribute'><strong>Start Time:</strong> 2018-06-11 11:17:52</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:42.625438</p>
-<p class='attribute'><strong>Status:</strong> Pass 1</p>
+<h1>自动化测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-06-12 11:17:24</p>
+<p class='attribute'><strong>Duration:</strong> 0:06:11.384242</p>
+<p class='attribute'><strong>Status:</strong> Pass 8 Error 1</p>
 
-<p class='description'>����ִ�������</p>
+<p class='description'>用例执行情况：</p>
 </div>
 
 
@@ -221,31 +221,48 @@ function showOutput(id, name) {
     <td>View</td>
 </tr>
 
-<tr class='passClass'>
-    <td>test_login.Test</td>
-    <td>1</td>
-    <td>1</td>
+<tr class='errorClass'>
+    <td>test_add.Test</td>
+    <td>3</td>
+    <td>2</td>
     <td>0</td>
-    <td>0</td>
-    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c1',3)">Detail</a></td>
 </tr>
 
 <tr id='pt1.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_login_success</div></td>
+    <td class='none'><div class='testcase'>test_add</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft1.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_add_more</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
-        pass</a>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        error</a>
 
-    <div id='div_pt1.1' class="popup_window">
+    <div id='div_ft1.2' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.1: 
+ft1.2: Traceback (most recent call last):
+  File "E:\test\todolist_po\TestCase\test_add.py", line 25, in test_add_more
+    AddPage.addActivity(self,'吃饭')
+  File "E:\test\todolist_po\PO\AddPage.py", line 22, in addActivity
+    add.send_keys_shuru_loc(activity)
+AttributeError: 'add_page' object has no attribute 'send_keys_shuru_loc'
+Traceback (most recent call last):
+  File "E:\test\todolist_po\TestCase\test_add.py", line 25, in test_add_more
+    AddPage.addActivity(self,'吃饭')
+  File "E:\test\todolist_po\PO\AddPage.py", line 22, in addActivity
+    add.send_keys_shuru_loc(activity)
+AttributeError: 'add_page' object has no attribute 'send_keys_shuru_loc'
+
 
         </pre>
     </div>
@@ -254,12 +271,121 @@ pt1.1:
     </td>
 </tr>
 
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_swipe</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_detail.Test</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_detail</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_edit.Test</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',3)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_cancel</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_edit</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_login.Test</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_success</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_logout.Test</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_logout</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
 <tr id='total_row'>
     <td>Total</td>
-    <td>1</td>
-    <td>1</td>
+    <td>9</td>
+    <td>8</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>&nbsp;</td>
 </tr>
 </table>

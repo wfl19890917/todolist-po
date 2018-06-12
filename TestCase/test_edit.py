@@ -34,9 +34,8 @@ class Test(unittest.TestCase):
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     suite=unittest.TestSuite()
-    #suite.addTest(Test('test_edit'))
-    #suite.addTest(Test('test_delete'))
+    suite.addTest(Test('test_edit'))
+    suite.addTest(Test('test_delete'))
     suite.addTest(Test('test_cancel'))
-    
     runner=unittest.TextTestRunner(verbosity=2)
     runner.run(suite)

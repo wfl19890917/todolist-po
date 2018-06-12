@@ -9,13 +9,13 @@ from Public import BasePage
 class login_page(BasePage.Base):
     user_loc=(By.ID,'com.example.todolist:id/nameET')
     passwd_loc=(By.ID,'com.example.todolist:id/passwordET')
-    btnlogin_loc=(By.ID,'com.example.todolist:id/loginBtn')
+    logbtn_loc=(By.CLASS_NAME,'android.widget.Button')
     def input_user(self,username):
         self.find_element(*self.user_loc).send_keys(username)
     def input_passwd(self,password):
         self.find_element(*self.passwd_loc).send_keys(password)
     def click_btnlogin(self):
-        self.find_element(*self.btnlogin_loc).click()
+        self.find_element(*self.logbtn_loc).click()
     #登录业务流程 
 def userlogin(self):
     login=login_page(self.driver)
