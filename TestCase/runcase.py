@@ -8,8 +8,8 @@ import HTMLTestRunner
 import time
 import os
 from Public import send_email
-test_dir='..\\TestCase\\'
-result='..\\Result\\'
+test_dir='E:\\test\\todolist_po\\TestCase'
+report_dir='E:\\test\\todolist_po\\Result'
 def CreatSuite():
     #定义单元测试容器
     suite=unittest.TestSuite()
@@ -24,34 +24,17 @@ def CreatSuite():
 if __name__ == "__main__":
     #所有的用例集合
     all_test_cases = CreatSuite()
-
     #获取系统当前时间
     now = time.strftime('%Y-%m-%d-%H_%M_%S', time.localtime(time.time()))
-    day = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-
-    #定义单个测试报告的存放路径，支持相对路径
-    tdresult = result + day
-
-    #若已经存在以当天日期为名称的文件夹的情况，则直接将测试报告放到这个文件夹之下
-    if os.path.exists(tdresult):
-        filename = tdresult + "\\" + now + "_result.html"
-        #以写文本文件或写二进制文件的模式打开测试报告文件
-        fp = open(filename, 'wb')
-        #定义测试报告
-        runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=u'小牛在线APP2.4.0-UI自动化测试报告', description=u'用例执行情况如下：')
-        #运行测试用例
-        runner.run(all_test_cases)
-        #关闭报告文件
-        fp.close()
-    else:
-        #不存在以当天日期为名称的文件夹的情况，则建立一个以当天日期为名称的文件夹
-        os.mkdir(tdresult)
-        #以写文本文件或写二进制文件的模式打开测试报告文件
-        filename = tdresult + "\\" + now + "_result.html"
-        fp = open(filename, 'wb')
-        #定义测试报告
-        runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=u'自动化测试报告', description=u'用例执行情况：')
-        #运行测试用例
-        runner.run(all_test_cases)
-        #关闭报告文件
-        fp.close()
+    filename=report_dir+"\\"+now+"_result.html"
+    print(filename)
+    fp = open(filename,'wb')
+    #定义测试报告
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=u'小牛在线APP2.4.0-UI自动化测试报告', description=u'用例执行情况如下：')
+    #运行测试用例
+    runner.run(all_test_cases)
+    #关闭报告文件
+    fp.close()
+    time.sleep(10)
+    new_report=send_email.get_NewReport(report_dir)
+    send_email.send_email(new_report)

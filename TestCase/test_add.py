@@ -31,7 +31,7 @@ if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     suite = unittest.TestSuite()
     suite.addTest(Test('test_add'))
-    suite.addTest(Test('test_add_more'))
+    #suite.addTest(Test('test_add_more'))
     suite.addTest(Test('test_swipe'))
     '''鎵ц娴嬭瘯'''
     runner=unittest.TextTestRunner(verbosity=2)
