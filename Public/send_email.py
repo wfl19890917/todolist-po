@@ -9,21 +9,11 @@ from email.mime.multipart import MIMEMultipart
 from email.header import Header
 import HTMLTestRunner
 import os,time
+from Data import globalparameter as gl
 def send_email(new_report):
     f=open(new_report,'rb')
-    mail_body=f.read()
+    mail_body=f.read()#读取报告正文
     f.close()
-    # 发送邮箱服务器
-    serverip ='smtp.qq.com'
-    serverport='465'
-    # 发件人邮箱
-    sender ='2855806083@qq.com'
-    # 接收人邮箱
-    receiver ='1126865919@qq.com'
-    # 发送邮箱用户信息
-    username ='2855806083@qq.com'
-    # 客户端授权码
-    password ='sdijonugzjnmddjd'
     #通过  模块构造的带附件的邮件如图
     msg = MIMEMultipart()
     #编写html类型的邮件正文，MIMEtext()用于定义邮件正文
@@ -38,12 +28,12 @@ def send_email(new_report):
     msg_file['Content-Type'] = 'application/octet-stream'
     msg_file["Content-Disposition"] = 'attachment;filename="TestReport.html"'
     msg.attach(msg_file)
-    msg['from'] = '2855806083@qq.com'  # 发送邮件的人
-    msg['to'] = '1126865919@qq.com'
+    msg['from']=gl.sender  # 发送邮件的人
+    msg['to']=gl.receiver
     # smtp = smtplib.SMTP('smtp.163.com', 25)  # 连接服务器
     try:
-        s = smtplib.SMTP_SSL(serverip, serverport)
-        s.login(username, password)
+        s = smtplib.SMTP_SSL(gl.serverip, gl.serverport)#ssl加密方式登录邮箱
+        s.login(gl.username, gl.password)
         # 这里的to_address是真正需要发送的到的mail邮箱地址需要的是一个list
         s.sendmail(msg['from'],msg['to'], msg.as_string())
         print('%s----发送邮件成功' % time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
