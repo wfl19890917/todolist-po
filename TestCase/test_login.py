@@ -25,12 +25,17 @@ class Test(unittest.TestCase):
         login.input_passwd('1')
         login.click_btnlogin()
         print("登录成功")
+        #link = self.dr.find_element_by_id('lnk_current_user')
+        #self.assertTrue('木秀于林' in link.text)  # 用assertTrue(x)方法来断言  bool(x) is True 登录成功后用户昵称在lnk_current_user里
     def test_login_user_null(self):
         login=LoginPage.login_page(self.driver)
         login.input_user('')
         login.input_passwd('1')
         login.click_btnlogin()
+        self.driver.get_screenshot_as_file(gl.tdresult+"\\"+"login_user_null.jpg")
         toast.is_toast_exist(self.driver,'用户名或者密码不能为空 !')
+        #error_message = self.dr.find_element_by_id('tip_btn').text
+        #self.assertIn('用户名或密码错误', error_message)  # 用assertIn(a,b)方法来断言 a in b  '用户名或密码错误'在error_message里
     def test_login_password_null(self):
         login=LoginPage.login_page(self.driver)
         login.input_user('1')
@@ -71,7 +76,7 @@ if __name__ == "__main__":
         title=u'todolist自动化测试报告',
         description=u'执行结果总结'
     )
-    result=runner.run(suite)
+    runner.run(suite)
     fb.close()
     time.sleep(5)
     new_report=send_email.get_NewReport(gl.tdresult)
