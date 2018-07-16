@@ -7,7 +7,6 @@ from appium import webdriver
 from selenium.webdriver.common.by import By
 from Public import BasePage
 from selenium import webdriver
-import unittest
 class add_page(BasePage.Base):
     add_loc=(By.ID,'com.example.todolist:id/action_new')
     shuru_loc=(By.ID,'com.example.todolist:id/toDoItemDetailET')

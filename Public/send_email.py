@@ -18,16 +18,13 @@ def send_email(new_report):
     msg = MIMEMultipart()
     #编写html类型的邮件正文，MIMEtext()用于定义邮件正文
     #发送正文
-    text = MIMEText(mail_body, 'html', 'utf-8')
-    text['Subject'] = Header('自动化测试报告', 'utf-8')
-    msg.attach(text)
-    #发送附件
+    msg.attach(MIMEText(mail_body, 'html', 'utf-8'))
     #Header()用于定义邮件标题
-    msg['Subject'] = Header('自动化测试报告', 'utf-8')
-    msg_file = MIMEText(mail_body, 'html', 'utf-8')
-    msg_file['Content-Type'] = 'application/octet-stream'
-    msg_file["Content-Disposition"] = 'attachment;filename="TestReport.html"'
-    msg.attach(msg_file)
+    msg['Subject'] = Header('app自动化测试报告', 'utf-8')
+    report_file = MIMEText(mail_body, 'html', 'utf-8')
+    report_file['Content-Type'] = 'application/octet-stream'
+    report_file["Content-Disposition"] = 'attachment;filename="TestReport.html"'
+    msg.attach(report_file)
     msg['from']=gl.sender  # 发送邮件的人
     msg['to']=gl.receiver
     # smtp = smtplib.SMTP('smtp.163.com', 25)  # 连接服务器
@@ -52,5 +49,7 @@ def get_NewReport(report_dir):
 #    L=file_path.split('\\')
 #    file_path='\\\\'.join(L)
     return file_path
+
+
 
 

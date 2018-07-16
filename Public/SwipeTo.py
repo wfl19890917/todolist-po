@@ -5,20 +5,11 @@ Created on 2018楠烇拷4閺堬拷19閺冿拷
 '''
 # coding:utf-8
 from appium import webdriver
-from time import sleep 
-from appium.webdriver.common.touch_action import TouchAction
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.common.by import By
 def swipeUp(driver, t=500, n=1):
-    l = driver.get_window_size()
-    x1 = l['width'] * 0.5  # x閸ф劖鐖�
-    y1 = l['height'] * 0.75  # 鐠у嘲顫恲閸ф劖鐖�   # 缂佸牏鍋閸ф劖鐖�
-    y2 = l['height'] * 0.125 
+    x=driver.get_window_size()['width']
+    y=driver.get_window_size()['height']
     for i in range(n):
-        driver.swipe(x1, y1, x1, y2, t)
-
+        driver.swipe(x/2, y*0.75, x, y*0.125, t)
 def swipeDown(driver, t=500, n=1):
     l = driver.get_window_size()
     x1 = l['width'] * 0.5  # x閸ф劖鐖�
